@@ -9,16 +9,16 @@ fi
 
 "${AT_PREFIX}/scripts/setup-services.sh"
 
-if which git && which cmake && which git && which node && which npm && which ethereum ; then
+if [ -x "$(command -v which)" ] && which git && which cmake && which git && which node && which npm && which geth ; then
     exit 0
 fi
 
-if which apt; then
-    PREFSUDO=""
-    if which sudo; then
-        PREFSUDO="sudo"
-    fi
+PREFSUDO=""
+if [ -x "$(command -v sudo)" ]; then
+    PREFSUDO="sudo"
+fi
 
+if [ -x "$(command -v apt)" ]; then
     ${PREFSUDO} apt update
 
     ${PREFSUDO} ln -fs /usr/share/zoneinfo/America/Chicago /etc/localtime
@@ -30,9 +30,20 @@ if which apt; then
     ${PREFSUDO} add-apt-repository -y ppa:ethereum/ethereum
     ${PREFSUDO} apt update
     ${PREFSUDO} apt install -y ethereum
+elif [ -x "$(command -v dnf)" ]; then
+
+    ${PREFSUDO} dnf install -y wget tar cmake gcc gcc-c++ cmake openssl openssl-devel expect nodejs npm golang
+
+    mkdir -p $HOME/go
+    echo 'export GOPATH=$HOME/go' >> $HOME/.bashrc
+    echo 'export PATH="$HOME/go/bin:${PATH}"' >> $HOME/.bashrc
+    source $HOME/.bashrc
+    go install github.com/ethereum/go-ethereum/cmd/geth@latest
+    go install github.com/ethereum/go-ethereum/cmd/puppeth@latest
+
 else
 
-    echo "Not running in an apt environment!"
+    echo "Not running in an apt or dnf environment!"
     exit 1
 
 fi

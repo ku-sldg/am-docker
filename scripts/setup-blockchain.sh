@@ -1,6 +1,8 @@
 #!/bin/bash -e
 
 AT_PREFIX="${AT_PREFIX:-}"
+GOPATH="${HOME}/go"
+export PATH="$HOME/go/bin:${PATH}"
 
 if ! [ -d "${AT_PREFIX}/ku-mst" ]; then
     cp -r ./ku-mst "${AT_PREFIX}/ku-mst"

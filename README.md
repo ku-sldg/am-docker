@@ -14,11 +14,13 @@ To build the container, you need:
 
 Then, build the container with `make`. You can optionally specify a remote registry using the `DOCKER_REGISTRY` environment variable.
 
+There are 2 versions of the container, one based on `ubuntu:22.04` and one based on `fedora:36`. You can build these with `make image_ubuntu` and `make image_fedora` respectively.
+
 If you want to install the demo files to a non-root directory, export the `AT_PREFIX` variable. This variable should NOT end with a `/`.
 
 ## Running the demo
 
-Once the container is built, you can run it using `make run`, which will drop you in a Bash shell.
+Once the container is built, you can run it using `make run_{ubuntu|fedora}`, which will drop you in a Bash shell.
 
 There, you can use my crappy `daymon` process manager to start the background services for the demo:
 
@@ -31,5 +33,7 @@ daymon_start demo.server  # or demo.serverClient
 
 Then, you can run the client demo:
 
-
+```shell
+cd /am-cakeml/build/apps/demo/clientdemo ../../../apps/demo/client/example_client.ini
+```
 
