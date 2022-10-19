@@ -103,9 +103,7 @@ expect " 1. Modify existing configurations\r
 > "
 send -- "2"
 send -- "\r"
-expect "Which folder to save the genesis spec into? (default = current)\r
-  Will create pnet.json\r
-> "
+expect "> "
 send -- "."
 send -- "\r"
 expect "What would you like to do? (default = stats)\r
