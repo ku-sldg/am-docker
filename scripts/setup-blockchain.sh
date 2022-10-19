@@ -35,7 +35,9 @@ geth --datadir node1 init pnet.json
 # Setup the smart contracts
 cd "${AT_PREFIX}/ku-mst/pnet"
 
-npm install -g truffle
+if ! which truffle ; then
+    npm install -g truffle
+fi
 
 mkdir node1/geth/truffle
 cd node1/geth/truffle
