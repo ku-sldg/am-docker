@@ -9,7 +9,7 @@ fi
 
 "${AT_PREFIX}/scripts/setup-services.sh"
 
-if [ -x "$(command -v which)" ] && which git && which cmake && which git && which node && which npm && which geth ; then
+if [ -x "$(command -v which)" ] && which git && which cmake && which node && which npm && which geth ; then
     exit 0
 fi
 
@@ -32,7 +32,7 @@ if [ -x "$(command -v apt)" ]; then
     ${PREFSUDO} apt install -y ethereum
 elif [ -x "$(command -v dnf)" ]; then
 
-    ${PREFSUDO} dnf install -y wget tar cmake gcc gcc-c++ cmake openssl openssl-devel expect nodejs npm golang
+    ${PREFSUDO} dnf install -y wget tar cmake gcc gcc-c++ which cmake openssl openssl-devel expect nodejs npm golang
 
     mkdir -p $HOME/go
     echo 'export GOPATH=$HOME/go' >> $HOME/.bashrc
