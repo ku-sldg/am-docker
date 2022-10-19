@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
 export DEBIAN_FRONTEND=noninteractive
+export PATH="${HOME}/go/bin:${PATH}"
 AT_PREFIX="${AT_PREFIX:-}"
 
 if ! [ -d "${AT_PREFIX}/scripts" ]; then

@@ -10,7 +10,7 @@ tar xzf "${ARCHIVE_PATH}"
 
 cd src
 make
-cp tpm_server /usr/bin/tpm_server
+cp tpm_server "${AT_PREFIX}/usr/bin/tpm_server"
 
 cd "${AT_PREFIX}/"
 rm -rf "${AT_PREFIX}/tpm"
