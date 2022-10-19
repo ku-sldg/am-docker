@@ -21,7 +21,7 @@ module.exports = {
     development: {
 	host: "127.0.0.1",
 	port: 8543,
-	network_id: "4321",
+	network_id: "54321",
 	from: "%%ACCT_ID%%",
 	gas: 0,
     },
