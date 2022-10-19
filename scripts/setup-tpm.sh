@@ -10,6 +10,7 @@ tar xzf "${ARCHIVE_PATH}"
 
 cd src
 make
+mkdir -p "${AT_PREFIX}/usr/bin"
 cp tpm_server "${AT_PREFIX}/usr/bin/tpm_server"
 
 cd "${AT_PREFIX}/"
