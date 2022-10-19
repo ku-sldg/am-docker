@@ -3,6 +3,9 @@
 AT_PREFIX="${AT_PREFIX:-}"
 cd "${AT_PREFIX}/ku-mst/pnet/node1/geth/truffle"
 
+BLK_HTTP_PORT="${BLK_HTTP_PORT:-8543}"
+BLK_NETWORK_ID="${BLK_NETWORK_ID:-4321}"
+
 cp ../../../../src/smartcontracts/goldenHashManager/HealthRecords.sol contracts
 cp ../../../../src/smartcontracts/goldenHashManager/credentialManager.sol contracts
 
@@ -15,14 +18,16 @@ module.exports = function(deployer) {
 };
 EOF
 
+ACCT_ID="0x$(cat ${AT_PREFIX}/ku-mst/pnet/geth-public-address.out)"
+
 cat > truffle-config.js <<EOF
 module.exports = {
     networks: {
     development: {
 	host: "127.0.0.1",
-	port: 8543,
-	network_id: "54321",
-	from: "%%ACCT_ID%%",
+	port: ${BLK_HTTP_PORT},
+	network_id: "${BLK_NETWORK_ID}",
+	from: "${ACCT_ID}",
 	gas: 0,
     },
   },
@@ -32,7 +37,7 @@ module.exports = {
 
   rpc: {
     host: "127.0.0.1",
-    port: 8543,
+    port: ${BLK_HTTP_PORT},
   },
 
   // Configure your compilers
@@ -43,8 +48,4 @@ module.exports = {
   }
 };
 EOF
-
-ACCT_ID="0x$(cat ${AT_PREFIX}/ku-mst/pnet/geth-public-address.out)"
-
-sed -i "s/%%ACCT_ID%%/$ACCT_ID/g" truffle-config.js
 
