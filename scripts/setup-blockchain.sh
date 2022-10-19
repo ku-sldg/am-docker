@@ -27,7 +27,6 @@ bash -xe "${AT_PREFIX}/scripts/prepare-puppeth-exp.sh"
 
 cd "${AT_PREFIX}/ku-mst/pnet"
 expect "${AT_PREFIX}/scripts/puppeth.exp"
-rm -f "${AT_PREFIX}/scripts/puppeth.exp" "${AT_PREFIX}/scripts/prepare-puppeth-exp.sh"
 
 geth --datadir node1 init pnet.json
 
