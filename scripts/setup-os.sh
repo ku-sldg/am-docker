@@ -10,7 +10,7 @@ fi
 
 "${AT_PREFIX}/scripts/setup-services.sh"
 
-if [ -x "$(command -v which)" ] && which git && which cmake && which node && which npm && which geth ; then
+if which git && which cmake && which node && which npm && which geth && which puppeth ; then
     exit 0
 fi
 
