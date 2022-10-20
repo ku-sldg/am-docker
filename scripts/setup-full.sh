@@ -1,19 +1,20 @@
 #!/bin/bash -e
 
 AT_PREFIX="${AT_PREFIX:-}"
+RELDIR="$(cd -- $(dirname -- ${BASH_SOURCE[0]}) &> /dev/null && pwd)"
 
 # Install OS-level dependencies
-"${AT_PREFIX}/scripts/setup-os.sh"
+"${RELDIR}/setup-os.sh"
 
 # Copy, build, and install the IBM TPM 2.0 server
-"${AT_PREFIX}/scripts/setup-tpm.sh"
+"${RELDIR}/setup-tpm.sh"
 
 # Download, build, and install the CakeML compiler
-"${AT_PREFIX}/scripts/setup-cakeml.sh"
+"${RELDIR}/setup-cakeml.sh"
 
 # Download and set up the AM blockchain
-"${AT_PREFIX}/scripts/setup-blockchain.sh"
+"${RELDIR}/scripts/setup-blockchain.sh"
 
 # Download and cmake the CakeML attestation manager
-"${AT_PREFIX}/scripts/setup-am-cakeml.sh"
+"${RELDIR}/scripts/setup-am-cakeml.sh"
 
