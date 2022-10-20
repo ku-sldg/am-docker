@@ -18,7 +18,7 @@ There are 2 versions of the container, one based on `ubuntu:22.04` and one based
 
 If you want to install the demo files to a non-root directory, export the `AT_PREFIX` variable. This variable should NOT end with a `/`.
 
-## Running the demo
+## Running the demo (in Docker)
 
 Once the container is built, you can run it using `make run_{ubuntu|fedora}`, which will drop you in a Bash shell.
 
@@ -36,4 +36,33 @@ Then, you can run the client demo:
 ```shell
 cd /am-cakeml/build/apps/demo/clientdemo ../../../apps/demo/client/example_client.ini
 ```
+
+## Running the demo (on the test bed)
+
+I've tested this on honesty and validity.
+
+```shell
+source scripts/test-bed.sh
+cd ..
+./am-docker/scripts/setup-full.sh
+```
+
+Then, start the server on one host:
+
+```shell
+source ~/at-demo/scripts/test-bed.sh
+daymon_start mine
+daymon_start demo.server
+tail -f ~/at-demo/var/log/daymon/demo.server.log
+```
+
+Then, on a different node, run the client:
+
+```shell
+source ~/at-demo/scripts/test-bed.sh
+cd ~/at-demo/am-cakeml
+./build/apps/demo/clientdemo ./apps/demo/client/example_client.ini
+```
+
+(The setup scripts will automatically replace the IP addresses / port numbers in code based on the environment variables configured by the `scripts/test-bed.sh` script.)
 
