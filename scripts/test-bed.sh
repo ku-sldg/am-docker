@@ -9,6 +9,7 @@ mkdir -p "$AT_PREFIX"
 export BLK_PORT=3001
 export BLK_HTTP_PORT=8544
 export DEMO_SERVER_PORT=5001
+export DEMO_SERVER_ADDR="10.237.124.2"
 
 source "${RELDIR}/daymon.sh"
 
