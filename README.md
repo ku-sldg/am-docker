@@ -1,10 +1,12 @@
 # AM-CakeML Environment
 
-This is a recipe for a Docker container that comes pre-configured with the `ku-mst` blockchain, IBM TPM emulator, and the `am-cakeml` attestation manager.
+This is a collection of scripts which automate the setup of the CakeML attestation manager and associated blockchain in various environments.
 
-The `Dockerfile` uses some heavy automation to perform all the setup for the TPM, blockchain initialization, smart contract accounts, and propagates the generated contract and account IDs to the necessary config files and CakeML source.
+The scripts can be used to setup the AM in on an arbitrary Linux machine (see "Running the demo (on the test bed)" for an example), but it also provides Dockerfiles which setup the environment in either Fedora- or Ubuntu-based images.
 
-## Building
+The scripts use some heavy automation to perform all the setup for the TPM, blockchain initialization, smart contract accounts, and propagates the generated contract and account IDs to the necessary config files and CakeML source.
+
+## Building Docker images
 
 To build the container, you need:
 
@@ -38,6 +40,8 @@ cd /am-cakeml/build/apps/demo/clientdemo ../../../apps/demo/client/example_clien
 ```
 
 ## Running the demo (on the test bed)
+
+> There are several environment variables which can be specified during setup to modify things like the blockchain port, demo server IP and port, and others. For an example, see `scripts/test-bed.sh`.
 
 I've tested this on honesty and validity.
 
