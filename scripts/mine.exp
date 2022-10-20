@@ -43,7 +43,7 @@ if {$force_conservative} {
 
 
 set timeout -1
-spawn geth --port %%BLK_PORT%% --networkid %%BLK_NETWORK_ID%% --nodiscover --allow-insecure-unlock --datadir=node1 --http --http.port %%BLK_HTTP_PORT%% --http.addr 127.0.0.1 --http.api db,eth,net,web3,personal console
+spawn geth --port %%BLK_PORT%% --networkid %%BLK_NETWORK_ID%% --nodiscover --allow-insecure-unlock --datadir=node1 --http --http.port %%BLK_HTTP_PORT%% --http.addr 0.0.0.0 --http.api db,eth,net,web3,personal console
 match_max 100000
 expect "To exit, press ctrl-d or type exit\r
 > "
