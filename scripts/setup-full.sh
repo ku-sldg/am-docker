@@ -13,8 +13,8 @@ RELDIR="$(realpath $(dirname -- ${BASH_SOURCE[0]}))"
 "${RELDIR}/setup-cakeml.sh"
 
 # Download and set up the AM blockchain
-"${RELDIR}/scripts/setup-blockchain.sh"
+"${RELDIR}/setup-blockchain.sh"
 
 # Download and cmake the CakeML attestation manager
-"${RELDIR}/scripts/setup-am-cakeml.sh"
+"${RELDIR}/setup-am-cakeml.sh"
 
