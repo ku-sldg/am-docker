@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
-ARCHIVE_PATH="$(realpath ibmtpm1682.tar.gz)"
+RELDIR="$(realpath $(dirname $(dirname ${BASH_SOURCE[0]})))"
+ARCHIVE_PATH="$(realpath ${RELDIR}/ibmtpm1682.tar.gz)"
 AT_PREFIX="${AT_PREFIX:-}"
 
 mkdir "${AT_PREFIX}/tpm"
