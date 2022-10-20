@@ -3,9 +3,10 @@
 export DEBIAN_FRONTEND=noninteractive
 export PATH="${HOME}/go/bin:${PATH}"
 AT_PREFIX="${AT_PREFIX:-}"
+RELDIR="$(realpath $(dirname -- ${BASH_SOURCE[0]}))"
 
 if ! [ -d "${AT_PREFIX}/scripts" ]; then
-    cp -r ./scripts "${AT_PREFIX}/scripts"
+    cp -r "$RELDIR" "${AT_PREFIX}/scripts"
 fi
 
 "${AT_PREFIX}/scripts/setup-services.sh"
