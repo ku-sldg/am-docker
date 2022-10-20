@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 AT_PREFIX="${AT_PREFIX:-}"
-RELDIR="$(cd -- $(dirname -- ${BASH_SOURCE[0]}) &> /dev/null && pwd)"
+RELDIR="$(realpath $(dirname -- ${BASH_SOURCE[0]}))"
 
 # Install OS-level dependencies
 "${RELDIR}/setup-os.sh"
